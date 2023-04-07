@@ -22,7 +22,6 @@ new Swiper('.home-slide', {
    spaceBetween: 160,
    autoHeight: true,
    simulateTouch: false,
-
 });
 /* --------------------------------smSlider------------------------------- */
 
@@ -146,7 +145,7 @@ btnsclose.forEach(btn => {
    }
 })
 /* ------------------------------ссылки--------------------- */
-let links = document.querySelectorAll('.menu__link')
+let links = document.querySelectorAll('.menu__link , .list-box__link')
 links.forEach(link => {
    link.onclick = (e) => {
       e.preventDefault()
@@ -154,12 +153,33 @@ links.forEach(link => {
       link.classList.add('active')
       const href = link.getAttribute('href').substring(1)
       const scrollTarget = document.getElementById(href)
-      const topOffset = 145
+      let topOffset;
+      link.classList.contains('list-box__link')?  topOffset = 95: topOffset = 145;
       const elementPosition = scrollTarget.getBoundingClientRect().top
       const offsetPosition = elementPosition - topOffset
       window.scrollBy({
          top: offsetPosition,
          behavior: 'smooth'
       })
+      if (link.classList.contains('list-box__link')) {
+         mabal.style.opacity = '0';
+         mabal.style.width = '16%';
+         setTimeout(i => {
+            mabal.style.display = 'none';
+         }, 400)
+      }
    }
 })
+let effect = document.querySelector('.header__effect')
+let fx = document.querySelector('.fixed')
+let headerY = window.scrollY
+let inter = setInterval(() => {
+   if (headerY > 0) {
+      effect.style.opacity = 1
+      fx.style.background = '#151515';
+   } else {
+      effect.style.opacity = 0.3
+      fx.style.background = 'none';
+   }
+   headerY = window.scrollY
+}, 80)

@@ -447,6 +447,9 @@
 }
 
 @media (max-width: 480px) {
+   .advan {
+      margin: -57px auto 0;
+   }
    .info-slider__left {
       height: 670px !important;
    }
@@ -683,7 +686,7 @@
    }
    .info-slider__left {
       min-height: 930px !important;
-  }
+   }
 }
 @media (max-width: 400px) {
    .info-slider__left ul li {
@@ -774,9 +777,12 @@
    }
 }
 @media (max-width: 380px) {
+   .advan {
+      margin: -10px auto 0;
+   }
    .info-slider__left {
       min-height: 670px !important ;
-  }
+   }
    .main-life__left h3 {
       font-size: 45px;
       line-height: 84%;
