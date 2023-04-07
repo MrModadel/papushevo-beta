@@ -1,12 +1,3 @@
-let links = document.querySelectorAll('.menu__link')
-
-links.forEach((link) => {
-   link.onclick = (e) => {
-      e.preventDefault()
-      links.forEach(x => x.classList.remove('active'))
-      link.classList.add('active')
-   }
-})
 new Swiper('.main-slider', {
    navigation: {
       nextEl: '.info-slider__next',
@@ -152,5 +143,23 @@ btnsclose.forEach(btn => {
       setTimeout(i => {
          mabal.style.display = 'none';
       }, 300)
+   }
+})
+/* ------------------------------ссылки--------------------- */
+let links = document.querySelectorAll('.menu__link')
+links.forEach(link => {
+   link.onclick = (e) => {
+      e.preventDefault()
+      links.forEach(x => x.classList.remove('active'))
+      link.classList.add('active')
+      const href = link.getAttribute('href').substring(1)
+      const scrollTarget = document.getElementById(href)
+      const topOffset = 145
+      const elementPosition = scrollTarget.getBoundingClientRect().top
+      const offsetPosition = elementPosition - topOffset
+      window.scrollBy({
+         top: offsetPosition,
+         behavior: 'smooth'
+      })
    }
 })
